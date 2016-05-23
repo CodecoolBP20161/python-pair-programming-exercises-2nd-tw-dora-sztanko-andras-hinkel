@@ -1,6 +1,4 @@
 from datetime import date
-import datetime
-
 
 def years(age):
     years_till_100 = 100 - age
