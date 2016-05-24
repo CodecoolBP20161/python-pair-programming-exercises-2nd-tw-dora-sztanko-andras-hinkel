@@ -14,16 +14,22 @@ def random_lower_case():
 
 
 def random_symbol():
-    x = list(range(33, 47))
-    x.extend(list(range(58, 64)))
-    x.extend(list(range(91, 96)))
-    x.extend(list(range(123, 126)))
+    x = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '?']
+    # x = list(range(33, 47))
+    # x.extend(list(range(58, 64)))
+    # x.extend(list(range(91, 96)))
+    # x.extend(list(range(123, 126)))
 
-    return chr(random.choice(x))
+    return random.choice(x)
+
 
 def passwordgen(weak=False):
     password = []
     weak_passwords = ['cat', 'password', '0000', '1234']
+    number = False
+    upper_case = False
+    lower_case = False
+    symbol = False
 
     if weak is False:
         for i in range(0, random.randint(8, 16)):
@@ -48,6 +54,8 @@ def passwordgen(weak=False):
                 password.append(random_upper_case())
             if not lower_case:
                 password.append(random_lower_case())
+            if not symbol:
+                password.append(random_symbol())
         return "".join(password)
     else:
         return weak_passwords[random.randint(0, len(weak_passwords)-1)]
